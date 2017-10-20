@@ -13,7 +13,9 @@
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_margin="5dp" />
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        />
 
     <com.jayce.art.view.ScrollerView
         android:layout_width="match_parent"

@@ -62,6 +62,7 @@ public class LineChart extends View {
     private Paint fillPaint;
 
     private Path linePath;
+    private Path fillPath;
 
     private List<Float> lineDatas;
 
@@ -72,6 +73,7 @@ public class LineChart extends View {
     private int radius;
 
     private int specX;
+    private int specY;
 
     //Y方向的最大值
     private int maxY = 50;
@@ -125,7 +127,7 @@ public class LineChart extends View {
         circlePaint.setAntiAlias(true);
         circlePaint.setColor(Color.YELLOW);
         circlePaint.setStrokeWidth(dip2px(2));
-        circlePaint.setStyle(Paint.Style.STROKE);
+        circlePaint.setStyle(Paint.Style.FILL);
 
 
         gridPaint = new Paint();
@@ -143,8 +145,9 @@ public class LineChart extends View {
 
 
         linePath = new Path();
+        fillPath = new Path();
 
-        radius = (int) dip2px(3);
+        radius = (int) dip2px(5);
 
         //关闭硬件加速
         setLayerType(LAYER_TYPE_SOFTWARE, null);
@@ -182,6 +185,7 @@ public class LineChart extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         specX = (int) ((getWidth() - getPaddingLeft() - getPaddingRight() - linePaint.getStrokeWidth()) / (lineCountX - 1));
+        specY = (int) ((getHeight() - getPaddingTop() - getPaddingBottom() - linePaint.getStrokeWidth()) / (lineCountY - 1));
         drawGrid(canvas);
         drawBezierLine(canvas);
 
@@ -198,19 +202,24 @@ public class LineChart extends View {
         linePath.reset();
         //path绘制线条移动到起始点
         linePath.moveTo(getPaddingLeft() + gridPaint.getStrokeWidth() / 2,
-                getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(0) + gridPaint.getStrokeWidth() / 2);
-
+                getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(0) - linePaint.getStrokeWidth()/2);
+        if (isFill)
+            fillPath.moveTo(getPaddingLeft() + gridPaint.getStrokeWidth() / 2,
+                    getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(0) - linePaint.getStrokeWidth());
 
         for (int i = 1; i < lineDatas.size(); i++) {
             //是否绘制贝塞尔曲线
             if (isBezier) {
-                Point controlPoint2 = new Point((int) (getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2 - specX / 2), (int) (getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) + gridPaint.getStrokeWidth()));
-                Point controlPoint1 = new Point((int) (getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2 - specX / 2), (int) (getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i - 1) + gridPaint.getStrokeWidth()));
+                Point controlPoint2 = new Point((int) (getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2 - specX / 2), (int) (getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) - linePaint.getStrokeWidth()/2));
+                Point controlPoint1 = new Point((int) (getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2 - specX / 2), (int) (getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i - 1) - linePaint.getStrokeWidth()/2));
                 linePath.cubicTo(controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2,
-                        getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) + gridPaint.getStrokeWidth() / 2);
+                        getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) - linePaint.getStrokeWidth()/2);
+                if (isFill)
+                    fillPath.cubicTo(controlPoint1.x, controlPoint1.y, controlPoint2.x, controlPoint2.y, getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2,
+                            getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) - linePaint.getStrokeWidth());
             } else {
                 linePath.lineTo(getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2,
-                        getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) + gridPaint.getStrokeWidth() / 2);
+                        getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) - linePaint.getStrokeWidth()/2);
 
 
             }
@@ -218,27 +227,32 @@ public class LineChart extends View {
 
         //是否绘制实心
         if (isFill) {
-            linePaint.setShader(new LinearGradient(0, 0, 0, getHeight(), linePaint.getColor(),
-                    Color.WHITE, Shader.TileMode.MIRROR));
             fillPaint.setShader(new LinearGradient(0, 0, 0, getHeight(), fillPaint.getColor(),
                     Color.WHITE, Shader.TileMode.MIRROR));
 
-            linePath.lineTo(getPaddingLeft() + (lineDatas.size() - 1) * specX + gridPaint.getStrokeWidth() / 2,
-                    getHeight() - getPaddingBottom() - gridPaint.getStrokeWidth() - fillPaint.getStrokeWidth());
-            linePath.lineTo(getPaddingLeft() + gridPaint.getStrokeWidth() / 2,
-                    getHeight() - getPaddingBottom() - gridPaint.getStrokeWidth() - fillPaint.getStrokeWidth());
-            linePath.close();
+            fillPath.lineTo(getPaddingLeft() + (lineDatas.size() - 1) * specX + gridPaint.getStrokeWidth() / 2,
+                    getHeight() - getPaddingBottom() - gridPaint.getStrokeWidth());
 
-            canvas.drawPath(linePath, fillPaint);
+            fillPath.lineTo(getPaddingLeft() + gridPaint.getStrokeWidth() / 2,
+                    getHeight() - getPaddingBottom() - gridPaint.getStrokeWidth());
+            fillPath.close();
+
+            canvas.drawPath(fillPath, fillPaint);
+            fillPath.reset();
         }
         canvas.drawPath(linePath, linePaint);
 
 
         for (int i = 0; i < lineDatas.size(); i++) {
             //绘制圆
+            circlePaint.setColor(Color.YELLOW);
             canvas.drawCircle(getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2,
-                    getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) + gridPaint.getStrokeWidth() / 2,
+                    getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i) - linePaint.getStrokeWidth()/2,
                     radius, circlePaint);
+            circlePaint.setColor(Color.RED);
+            canvas.drawCircle(getPaddingLeft() + i * specX + gridPaint.getStrokeWidth() / 2,
+                    getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * lineDatas.get(i)- linePaint.getStrokeWidth()/2,
+                    radius * 0.5f, circlePaint);
 
         }
 
