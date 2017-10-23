@@ -27,15 +27,16 @@ public class MainActivity extends Activity {
         lineChart = findViewById(R.id.line_chart);
 
         List<ChartData> lineDatas = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 31; i++) {
             lineDatas.add(new ChartData((float) Math.random(), 10 + "/" + (i + 1)));
         }
 
 
 
-        lineChart.setFill(true)
+        lineChart.setFill(false)
                 .setBezier(true)
                 .setChartLine(true)
+                .setGridLine(false)
                 .setHorizontalLine(true)
                 .setVerticalLine(true)
                 .setDatas(lineDatas);
