@@ -33,13 +33,13 @@ public class MainActivity extends Activity {
 
 
 
-        lineChart.setFill(false)
-                .setBezier(true)
-                .setChartLine(true)
-                .setGridLine(false)
-                .setHorizontalLine(true)
-                .setVerticalLine(true)
-                .setDatas(lineDatas);
+        lineChart.setFill(false)//默认true,false不绘制实心
+                .setBezier(true)//默认true（贝塞尔曲线）,false绘制普通折线
+                .setChartLine(false)//绘制折线默认true，false:只有原点
+                .setGridLine(false)//默认true，false不会只网格背景
+                .setHorizontalLine(true)//默认true,false不会只横向坐标线
+                .setVerticalLine(true)//默认true,false不会只纵向坐标线
+                .setDatas(lineDatas);//数据源
 
         Log.e("TAG", "onCreate Width: " + circleView.getMeasuredWidth() + " Height: " + circleView.getMeasuredHeight());
 
