@@ -4,8 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.jayce.art.view.ChartData;
 import com.jayce.art.view.CircleView;
-import com.jayce.art.view.LineChart;
+import com.jayce.art.view.LineCharts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class MainActivity extends Activity {
 
     private CircleView circleView;
 
-    private LineChart lineChart;
+    private LineCharts lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,21 +26,19 @@ public class MainActivity extends Activity {
 
         lineChart = findViewById(R.id.line_chart);
 
-        List<Float> lineDatas = new ArrayList<>();
-        //测试数据
-        lineDatas = new ArrayList<>();
-        for (int i = 0; i < 10 ; i++) {
-            lineDatas.add(1f);
+        List<ChartData> lineDatas = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            lineDatas.add(new ChartData((float) Math.random(), 10 + "/" + (i + 1)));
         }
-        for (int i = 0; i < 20; i++) {
-            lineDatas.add((float) Math.random());
-        }
+
 
 
         lineChart.setFill(true)
                 .setBezier(true)
+                .setChartLine(true)
+                .setHorizontalLine(true)
+                .setVerticalLine(true)
                 .setDatas(lineDatas);
-
 
         Log.e("TAG", "onCreate Width: " + circleView.getMeasuredWidth() + " Height: " + circleView.getMeasuredHeight());
 

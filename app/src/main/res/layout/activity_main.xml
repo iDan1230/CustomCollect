@@ -9,13 +9,12 @@
     tools:context="com.jayce.art.MainActivity">
 
 
-    <com.jayce.art.view.LineChart
+    <com.jayce.art.view.LineCharts
         android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
         android:paddingTop="5dp"
-        android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         />
 
