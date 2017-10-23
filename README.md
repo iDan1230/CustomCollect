@@ -8,6 +8,8 @@
 ![image](https://github.com/yangzhidan/CustomCollect/blob/master/art/noGridLine.png)</br></br>
 4.折线图 </br></br>
 ![image](https://github.com/yangzhidan/CustomCollect/blob/master/art/brokenLine.png)</br></br>
+5.点 </br></br>
+![image](https://github.com/yangzhidan/CustomCollect/blob/master/art/point.png)</br></br>
 lineChart.setFill(false)//默认true,false不绘制实心</br>
                 .setBezier(true)//默认true（贝塞尔曲线）,false绘制普通折线</br>
                 .setChartLine(false)//绘制折线默认true，false:只有原点</br>
