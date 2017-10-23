@@ -317,6 +317,9 @@ public class LineCharts extends View {
             canvas.drawPath(linePath, linePaint);
 
         }
+        /**
+         *  这里绘制了两种颜色不一样的圆，可以只要一个
+         */
         for (int i = 0; i < datas.size(); i++) {
             //绘制圆
             circlePaint.setColor(Color.YELLOW);
@@ -324,6 +327,7 @@ public class LineCharts extends View {
                     getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * datas.get(i).getSize(),
                     radius, circlePaint);
             circlePaint.setColor(Color.RED);
+            //绘制圆
             canvas.drawCircle(getPaddingLeft() + i * specX,
                     getPaddingTop() + (getHeight() - getPaddingBottom() - getPaddingTop()) * datas.get(i).getSize(),
                     radius * 0.5f, circlePaint);
@@ -339,22 +343,23 @@ public class LineCharts extends View {
      */
     private void drawGrid(Canvas canvas) {
 
+        //横向线
         if (isGridLine && isHorizontalLine) {
             for (int i = 0; i < lineCountY - 1; i++) {
                 canvas.drawLine(getPaddingLeft() - gridPaint.getStrokeWidth() / 2, getPaddingTop() + i * specY, ((datas.size() < 7 ? 7 : datas.size()) - 1) * specX + getPaddingLeft() + gridPaint.getStrokeWidth() / 2, getPaddingTop() + i * specY, gridPaint);
             }
         }
-
+        //底线
         canvas.drawLine(getPaddingLeft() - gridPaint.getStrokeWidth() / 2, getPaddingTop() + (lineCountY - 1) * specY + gridPaint.getStrokeWidth() / 2, ((datas.size() < 7 ? 7 : datas.size()) - 1) * specX + getPaddingLeft() + gridPaint.getStrokeWidth() / 2, getPaddingTop() + (lineCountY - 1) * specY + gridPaint.getStrokeWidth() / 2, gridPaint);
 
 
         if (isGridLine && isVerticalLine) {
             for (int i = 0; i < (datas.size() < 7 ? 7 : datas.size()); i++) {
+                //纵向线
                 canvas.drawLine(getPaddingLeft() + i * specX, getPaddingTop(), getPaddingLeft() + i * specX, getHeight() - getPaddingBottom() + labelHeight, gridPaint);
 
-
+                //绘制文字
                 Rect textRect = new Rect(getPaddingLeft() + i * specX - specX / 2, getHeight() - getPaddingBottom() + labelHeight, getPaddingLeft() + i * specX + specX / 2, getHeight() + labelHeight);
-
                 Paint.FontMetricsInt fontMetricsInt = textPaint.getFontMetricsInt();
                 int baseline = (textRect.bottom + textRect.top - fontMetricsInt.bottom - fontMetricsInt.top) / 2;
                 if (i < datas.size())

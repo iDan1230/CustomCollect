@@ -166,8 +166,6 @@ public class ScrollerView extends ViewGroup {
                 }
                 break;
         }
-
-
         return super.onInterceptTouchEvent(ev);
     }
 
@@ -231,4 +229,6 @@ public class ScrollerView extends ViewGroup {
             postInvalidate();
         }
     }
+
+
 }

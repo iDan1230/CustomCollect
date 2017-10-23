@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jayce.art.view.RefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/refresh"
+    tools:context="com.jayce.art.RefreshActivity">
+
+    <com.jayce.art.view.RefreshHeadLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#F5f5"
+     />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#F55" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#F555" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#Fff5" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#F555" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#f22" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#F445" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#f324" />
+</com.jayce.art.view.RefreshLayout>

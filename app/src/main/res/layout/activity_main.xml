@@ -8,182 +8,63 @@
 
     tools:context="com.jayce.art.MainActivity">
 
+    <com.jayce.art.view.CircleView
+        android:id="@+id/circle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:padding="10dp"
+        art:color="@color/colorPrimary" />
 
-    <com.jayce.art.view.LineCharts
-        android:id="@+id/line_chart"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
-        android:layout_marginRight="5dp"
-        />
 
-    <com.jayce.art.view.ScrollerView
+    <com.jayce.art.view.ElasticLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-        <com.jayce.art.view.CircleView
-            android:id="@+id/circle_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
+        <com.jayce.art.view.LineCharts
+            android:id="@+id/line_chart1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp" />
 
-        <com.jayce.art.view.CircleView
-            android:id="@+id/circle_view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
+        <com.jayce.art.view.LineCharts
+            android:id="@+id/line_chart2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp" />
 
-        <com.jayce.art.view.CircleView
-            android:id="@+id/circle_view3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
+        <com.jayce.art.view.LineCharts
+            android:id="@+id/line_chart3"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp" />
 
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
+        <com.jayce.art.view.LineCharts
+            android:id="@+id/line_chart4"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp" />
 
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
-
-        <com.jayce.art.view.CircleView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            art:color="@color/colorPrimary" />
+        <com.jayce.art.view.LineCharts
+            android:id="@+id/line_chart5"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp" />
 
 
-    </com.jayce.art.view.ScrollerView>
+    </com.jayce.art.view.ElasticLayout>
 
 
 </LinearLayout>
